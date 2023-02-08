@@ -27,13 +27,13 @@ def doBackgroundTask(inp):
     print(inp.msg)
     print("Done")
     
-def getRNC(driver: webdriver.Chrome) -> str:
+def getRNC(driver: webdriver.Chrome, rnc_empresa) -> str:
     #buscamos el rnc
     driver.get("https://www.dgii.gov.do/app/WebApps/ConsultasWeb/consultas/rnc.aspx")
 
     # Fill in the text field
     text_field = driver.find_element(By.ID, 'ctl00_cphMain_txtRNCCedula')
-    text_field.send_keys("101013702")
+    text_field.send_keys(str(rnc_empresa))
 
     # Click the button
     button = driver.find_element(By.ID, 'ctl00_cphMain_btnBuscarPorRNC')
