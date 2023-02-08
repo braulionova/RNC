@@ -54,5 +54,6 @@ def getRNC(driver: webdriver.Chrome) -> str:
     print(rnc_empresa.text)
     #nombre empresa
     nombre_empresa = driver.find_element(By.XPATH, '//*[@id="ctl00_cphMain_dvDatosContribuyentes"]/tbody/tr[2]/td[2]')
+    print(nombre_empresa.text)
     
-    return nombre_empresa
+    return nombre_empresa.text
