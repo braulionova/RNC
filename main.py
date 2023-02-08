@@ -1,4 +1,4 @@
-from fastapi import FastAPI, BackgroundTasks, HTTPException, Response
+from fastapi import FastAPI, BackgroundTasks, HTTPException, Response, Body
 from pydantic import BaseModel
 from extract import *
 import os
@@ -34,13 +34,13 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
     return {"message": "Success, background task started"}
 
 class Empresa(BaseModel):
-    text: str
-
+    rnc: str
+        
 @app.post("/get_rnc")
-async def get_rnc(rnc_empresa : Empresa):
+async def get_rnc(empresa: Empresa = Body(...)):
     driver=createDriver()
     #nombre empresa
-    nombre_empresa = getRNC(driver, rnc_empresa.text)
+    nombre_empresa = getRNC(driver, empresa.rnc)
     driver.close()
     #return
     return {"nombre_empresa": str(nombre_empresa)}
