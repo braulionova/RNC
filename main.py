@@ -34,10 +34,10 @@ async def demo_post(inp: Msg, background_tasks: BackgroundTasks):
     return {"message": "Success, background task started"}
 
 @app.post("/get_rnc")
-async def get_rnc(rnc_empresa):
+async def get_rnc(rnc_empresa : RNC_Empresa):
     driver=createDriver()
     #nombre empresa
-    nombre_empresa = getRNC(driver, rnc_empresa)
+    nombre_empresa = getRNC(driver, RNC_Empresa)
     driver.close()
     #return
     return {"nombre_empresa": str(nombre_empresa)}
