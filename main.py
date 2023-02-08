@@ -37,7 +37,7 @@ class Empresa(BaseModel):
     rnc: str
         
 @app.post("/get_rnc")
-async def get_rnc(empresa: Empresa = Body(...)):
+async def get_rnc(empresa: Empresa = Body()):
     driver=createDriver()
     #nombre empresa
     nombre_empresa = getRNC(driver, empresa.rnc)
