@@ -40,7 +40,7 @@ async def get_rnc():
     nombre_empresa = getRNC(driver)
     driver.close()
     #return
-    return Response(content=nombre_empresa, media_type="application/json")
+    return {"nombre_empresa": str(nombre_empresa)}
     
 
 
