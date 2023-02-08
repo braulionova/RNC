@@ -1,4 +1,4 @@
-from fastapi import FastAPI, BackgroundTasks, HTTPException
+from fastapi import FastAPI, BackgroundTasks, HTTPException, Response
 from pydantic import BaseModel
 from extract import *
 import os
@@ -40,7 +40,7 @@ async def get_rnc():
     nombre_empresa = getRNC(driver)
     driver.close()
     #return
-    return {"nombre_empresa": nombre_empresa}
+    return Response(content=nombre_empresa, media_type="application/json")
     
 
 
